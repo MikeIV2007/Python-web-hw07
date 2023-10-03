@@ -1,0 +1,47 @@
+https://youtu.be/wsRYHMOUuZg
+3:00 src/db.py
+4:00 staart docker postgres: 
+
+    docker run --name web73 -p 5432:5432 -e POSTGRES_PASSWORD=misql -d postgres
+
+istall postgress driver:
+
+    poetry add psycopg2
+
+
+21:00 install alembic: 
+
+    poetry add alembic
+
+    (alembic init alembic)
+    alembic init migrations
+
+27:00 create migration:
+
+    alembic revision --autogenerate -m 'Init'
+33:00 seeds
+39:50 main.py how to work with data
+1:02 renew stacture fo tables by alembic
+1:20 HW 
+    in config ini change PW and name of DB
+    start docker:
+        docker run --name HW07 -p 5432:5432 -e POSTGRES_PASSWORD=misql -d postgres
+    alembic init migrations (already done)
+    alembic upgrade head
+        applies all pending migrations
+    alembic revision --autogenerate -m 'Init'
+    
+        used with Alembic, a database migration tool for Python and SQLAlchemy, to automatically generate a new migration revision based on the differences between the current state of your database and the SQLAlchemy models in your application. Let's break down the command:
+
+        alembic: This is the command-line interface for Alembic, which allows you to manage database migrations.
+
+        revision: This is a subcommand in Alembic used to create new database migration revisions.
+
+        --autogenerate: This flag tells Alembic to automatically generate the migration script by comparing the current state of your database to the SQLAlchemy models defined in your application. It detects changes in the models (e.g., new tables, columns, or modifications) and generates the necessary migration code to bring the database schema in sync with the models.
+
+        -m 'Init': This part of the command specifies a message for the new migration revision. In this case, 'Init' is provided as the message, which is typically a short description of the changes 
+1:28 seeds.py filling the tables with random data
+1:29 main.py creat a quere from databse
+1:37 first query
+1:42 second 
+1:45 twelves

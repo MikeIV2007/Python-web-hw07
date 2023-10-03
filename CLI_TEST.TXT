@@ -1,0 +1,25 @@
+py main.py -a create -m Teacher -n 'Boris Jonson'
+py main.py -a list -m Teacher
+py main.py -a update -m Teacher --id 6 -n 'Max Faraday'
+py main.py -a remove -m Teacher --id 6
+
+py main.py -a create -m Group -n 'EP-901'
+py main.py -a list -m Group
+py main.py -a update -m Group --id 4 -n 'EP-903'
+py main.py -a remove -m Group --id 4
+
+py main.py -a create -m Student -n 'Jhon Bill'
+py main.py -a list -m Student
+py main.py -a update -m Student --id 51 -n 'Bill Jhon'
+py main.py -a remove -m Student --id 51
+
+py main.py -a create -m Discipline -n 'Singing'
+py main.py -a list -m Discipline
+py main.py -a update -m Discipline --id 9 -n 'Drawing'
+py main.py -a remove -m Discipline --id 9
+
+py main.py -a create -m Grade -n 3
+py main.py -a create -m Grade -n '3'
+py main.py -a list -m Grade
+py main.py -a update -m Grade --id 956 -n '10'
+py main.py -a remove -m Grade --id 956
