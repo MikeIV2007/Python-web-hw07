@@ -8,8 +8,6 @@ from src.models import Grade, Student, Discipline
 from seed import date_range
 
 
-
-
 def create_grade(name):
     start_date = datetime.strptime("2023-09-01", "%Y-%m-%d")
     print(start_date)

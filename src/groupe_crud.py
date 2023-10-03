@@ -1,6 +1,7 @@
 from src.db import session
 from src.models import Group
 
+
 def create_group(name):
     group = Group(name = name)
     session.add(group)

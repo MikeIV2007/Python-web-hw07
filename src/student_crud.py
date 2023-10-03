@@ -12,33 +12,6 @@ def create_student(name):
     session.close()
     print(f"New student with name {name} created.")
 
-    # ----Retrieve all existing group ids
-    # group_ids = session.query(Group.id).all()
-
-
-    # if not group_ids:
-    #     print("No groups exist. Please create groups before adding students.")
-    #     return
-
-    # # Randomly select a group id
-    # selected_group_id = choice(group_ids)[0]
-
-    # # Create a new student with the selected group id
-    # student = Student(fullname=name, group_id=selected_group_id)
-
-    # try:
-    #     # Add the student to the session and commit the transaction
-    #     session.add(student)
-    #     session.commit()
-    #     print(f"New student with name {name} and group_id {selected_group_id} created.")
-    # except Exception as e:
-    #     # Handle any exceptions that may occur during the transaction
-    #     session.rollback()
-    #     print(f"Error creating student: {str(e)}")
-    # finally:
-    #     # Close the session
-    #     session.close()
-
 
 def list_students():
     students = session.query(Student).all()
