@@ -3,13 +3,8 @@ from random import randint, choice
 import faker
 from sqlalchemy import select
 
-from src.models import Student, Student, Discipline, Grade, Group
+from src.models import Student, Teacher, Discipline, Grade, Group
 from src.db import session
-
-"""
-Створюємо свою ф-цію для отримання списку дат, у які відбувається навчальний процес.
-Для спрощення викидаємо тільки дні, які потрапляють на вихідні.
-"""
 
 
 def date_range(start: date, end: date) -> list:
@@ -20,15 +15,6 @@ def date_range(start: date, end: date) -> list:
             result.append(current_date)
         current_date += timedelta(1)
     return result
-
-
-"""
-Функція створення БД, як параметр - передаємо шлях до файлу з SQL скриптом
-"""
-
-"""
-Функція генерації фейкових даних і заповнення ними БД
-"""
 
 
 def fill_data():
@@ -52,12 +38,12 @@ def fill_data():
 
     def seed_teachers():
         for _ in range(number_of_teachers):
-            teacher = Student(fullname=fake.name())
+            teacher = Teacher(fullname=fake.name())
             session.add(teacher)
         session.commit()
 
     def seed_disciplines():
-        teacher_ids = session.scalars(select(Student.id)).all()
+        teacher_ids = session.scalars(select(Teacher.id)).all()
         for discipline in disciplines:
             session.add(Discipline(name=discipline, teacher_id=choice(teacher_ids)))
         session.commit()
@@ -75,19 +61,15 @@ def fill_data():
         session.commit()
 
     def seed_grades():
-        # дата початку навчального процесу
         start_date = datetime.strptime("2023-09-01", "%Y-%m-%d")
-        # дата закінчення навчального процесу
-        end_date = datetime.strptime("2024-06-290", "%Y-%m-%d")
+        end_date = datetime.strptime("2024-06-29", "%Y-%m-%d")
         d_range = date_range(start=start_date, end=end_date)
         discipline_ids = session.scalars(select(Discipline.id)).all()
         student_ids = session.scalars(select(Student.id)).all()
 
-        for d in d_range:  # пройдемося по кожній даті
+        for d in d_range:
             random_id_discipline = choice(discipline_ids)
             random_ids_student = [choice(student_ids) for _ in range(5)]
-            # проходимося списком "везучих" студентів, додаємо їх до результуючого списку
-            # і генеруємо оцінку
             for student_id in random_ids_student:
                 grade = Grade(
                     grade=randint(1, 12),

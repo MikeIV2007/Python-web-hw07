@@ -28,7 +28,7 @@ istall postgress driver:
         docker run --name HW07 -p 5432:5432 -e POSTGRES_PASSWORD=misql -d postgres
     alembic init migrations (already done)
     alembic upgrade head
-        applies all pending migrations
+        (applies all pending migrations)
     alembic revision --autogenerate -m 'Init'
     
         used with Alembic, a database migration tool for Python and SQLAlchemy, to automatically generate a new migration revision based on the differences between the current state of your database and the SQLAlchemy models in your application. Let's break down the command:

@@ -27,7 +27,7 @@ class Student(Base):
 class Discipline(Base):
     __tablename__ = "disciplines"
     id = Column(Integer, primary_key=True)
-    name = Column(String(120), nullable=False)
+    name = Column(String(), nullable=False)
     teacher_id = Column("teacher_id", ForeignKey("teachers.id", ondelete="CASCADE"))
     teacher = relationship("Teacher", backref="disciplines")
 
